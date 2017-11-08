@@ -2,13 +2,14 @@
 
 var app = app || {};
 
-const __API_URL__ = 'https://cl-ab-booklist.herokuapp.com';
+// const __API_URL__ = 'https://cl-ab-booklist.herokuapp.com';
+const __API_URL__ = 'http://localhost:3000';
 
 (function(module) {
-  function errorCallback(err) {
-    console.error(err);
-    module.errorView.initErrorPage(err);
-  }
+  // function errorCallback(err) {
+  //   console.error(err);
+  //   module.errorView.initErrorPage(err);
+  // }
 
   function Book (rawBookObj) {
     Object.keys(rawBookObj).forEach(key => this[key] = rawBookObj[key]);
@@ -25,7 +26,7 @@ const __API_URL__ = 'https://cl-ab-booklist.herokuapp.com';
     $.get(`${__API_URL__}/api/v1/books`)
       .then(Book.loadAll)
       .then(callback)
-      .catch(errorCallback);
+      // .catch(errorCallback);
 
   module.Book = Book;
 
