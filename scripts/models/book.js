@@ -21,7 +21,10 @@ const __API_URL__ = 'http://localhost:3000';
   }
 
   Book.all = [];
-  Book.loadAll = rows => Book.all = rows.sort((a, b) => b.title - a.title).map(book => new Book(book));
+  Book.loadAll = rows => {
+    console.log(rows);
+    Book.all = rows.sort((a, b) => b.title - a.title).map(book => new Book(book));
+  }
   Book.fetchAll = callback =>
     $.get(`${__API_URL__}/api/v1/books`)
       .then(Book.loadAll)
