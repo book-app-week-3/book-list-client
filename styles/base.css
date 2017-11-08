@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: lightGray;
+  background-color: black;
   font-family: helvetica;
   margin: 0 auto;
   text-align: center;
@@ -12,4 +12,7 @@ body {
 
 h1 {
   font-size: 35px;
+  background-color: lightGray;
+  color: black;
+  padding: 1em;
 }
