@@ -2,8 +2,8 @@
 
 var app = app || {};
 
-// const __API_URL__ = 'https://cl-ab-booklist.herokuapp.com';
-const __API_URL__ = 'http://localhost:3000';
+const __API_URL__ = 'https://cl-ab-booklist.herokuapp.com';
+// const __API_URL__ = 'http://localhost:3000';
 
 (function(module) {
   // function errorCallback(err) {
