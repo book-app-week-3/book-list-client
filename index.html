@@ -2,9 +2,52 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Hello World</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/icons.css">
+    <link rel="stylesheet" href="./styles/base.css">
+    <link rel="stylesheet" href="./styles/layout.css">
+    <link rel="stylesheet" href="./styles/modules.css">
+
+    <script type="text/x-handlebars-template" id="error-template">
+      <h3>Ooops!! Something went wrong!</h3>
+      <p>{{status}}: {{statusText}}</p>
+    </script>
+
+    <script type="text/x-handlebars-template" id="book-list-template">
+      <li class="book-items" data-bookid={{book_id}}>
+        <div class="book-container">
+          <img src={{image_url}}>
+          <div class ="book-overlay">
+            <h3>{{title}}</h3>
+            <p>{{author}}</p>
+          </div>
+        </div>
+      </li>
+    </script>
   </head>
   <body>
-    <h1>Hello World</h1>
+    <header>
+      <div class="header-content">
+        <h1>Code Fellows Books</h1>
+      </div>
+    </header>
+    <main>
+      <section class="error-view container">
+        <h2 class="view-title">There's an issue</h2>
+        <sectionid="error-message"></section>
+      </section>
+      <section class="book=view container">
+        <h2 class="view-title">My Books</h2>
+        <section class="book-list">
+          <ul id="book=list"></ul>
+        </section>
+      </section>
+    </main>
+    <script type="text/javascript" src="./scripts/models/book.js"></script>
+    <script type="text/javascript" src="./scripts/views/book-view.js"></script>
+    <script type="text/javascript" src="./scripts/views/error-view.js"></script>
+
   </body>
 </html>
