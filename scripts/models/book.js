@@ -1,6 +1,6 @@
 'use strict';
 
-let app = app || {};
+var app = app || {};
 
 const __API_URL__ = 'https://cl-ab-booklist.herokuapp.com';
 
