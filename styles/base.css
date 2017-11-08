@@ -1,0 +1,15 @@
+* {
+  max-width: 960px;
+}
+
+body {
+  background-color: lightGray;
+  font-family: helvetica;
+  margin: 0 auto;
+  text-align: center;
+  border: 2px solid black;
+}
+
+h1 {
+  font-size: 35px;
+}
