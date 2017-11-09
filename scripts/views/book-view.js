@@ -26,9 +26,9 @@ var app = app || {};
   bookView.initDetailPage = function(ctx) {
     resetView();
     $('.detail-view').show();
-    $('.book-detail').empty();
+    $('.book-details').empty();
     let template = Handlebars.compile($('#book-detail-template').text());
-    $('.book-detail').append(template(ctx));
+    $('.book-details').append(template(ctx));
   }
 
   bookView.initCreateFormPage = function() {
