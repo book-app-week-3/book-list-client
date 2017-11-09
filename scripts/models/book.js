@@ -2,8 +2,8 @@
 
 var app = app || {};
 
-const __API_URL__ = 'https://cl-ab-booklist.herokuapp.com';
-// const __API_URL__ = 'http://localhost:3000';
+// const __API_URL__ = 'https://cl-ab-booklist.herokuapp.com';
+const __API_URL__ = 'http://localhost:3000';
 
 (function(module) {
   function errorCallback(err) {
@@ -37,10 +37,41 @@ const __API_URL__ = 'https://cl-ab-booklist.herokuapp.com';
       .then(callback)
       .catch(errorCallback);
 
-  Book.create = book =>
+  Book.create = book => {
     $.post(`${__API_URL__}/api/v1/books`, book)
+      .then(() => {
+        page('/');
+      })
+      .catch(error => console.log(error));
+  }
+
+  Book.update = (ctx, next) => {
+    $.ajax({
+      url: `${__API_URL__}/api/v1/books/${ctx.params.book_id}`,
+      method: 'PUT',
+      data: {
+        title: ctx.title,
+        author: ctx.author,
+        isbn: ctx.isbn,
+        image_url: ctx.image_url,
+        description: ctx.description
+      }
+    })
       .then(() => page('/'))
       .catch(errorCallback);
+    next();
+  }
+
+  Book.destroy = ctx => {
+    $.ajax({
+      url: `${__API_URL__}/api/v1/books/${ctx.params.book_id}`,
+      method: 'DELETE'
+    })
+      .then(console.log('deleted book'))
+      .then(() => page('/'))
+      .catch(errorCallback);
+  }
+
 
   module.Book = Book;
 

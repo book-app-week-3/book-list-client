@@ -1,7 +1,7 @@
 'use strict';
 
 var app = app || {};
-var __API_URL__ = 'http://localhost:3000';
+// var __API_URL__ = 'http://localhost:3000';
 
 (function(module) {
   const adminView = {};
@@ -13,7 +13,7 @@ var __API_URL__ = 'http://localhost:3000';
       event.preventDefault();
       let token = event.target.passphrase.value;
 
-      $.get(`${__API_URL__}/admin`, {token})
+      $.get(`${__API_URL__}/admin`, {token}) // eslint-disable-line
         .then(() => {
           localStorage.token = true;
           page('/books/new');

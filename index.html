@@ -39,6 +39,8 @@
         </div>
         <img src={{image_url}}>
         <p>{{description}}</p>
+        <button data-id={{book_id}} id="update-button" type="submit">Update</button>
+        <button data-id={{book_id}} id="delete-button" type="submit">Delete</button>
       </div>
     </script>
   </head>
@@ -70,7 +72,7 @@
       </section>
 
       <section class="detail-view container">
-        <section class="book-detail"></section>
+        <section class="book-details"></section>
       </section>
 
       <section class="create-view container">
@@ -84,6 +86,19 @@
           <button type="submit">Submit</button>
         </form>
       </section>
+
+      <section class="update-view container">
+        <h2 class="view-title">Add a New Book</h2>
+        <form id="update-form">
+          <input type="text" name="title" placeholder="title">
+          <input type="text" name="author" placeholder="author">
+          <input type="text" name="isbn" placeholder="isbn">
+          <input type="text" name="image_url" placeholder="image_url">
+          <textarea name="description" placeholder="description" rows="5" cols="30"></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+
       <section class="admin-view container">
         <h2 class="view-title">Enter your Passphrase</h2>
         <form id="admin-form">
