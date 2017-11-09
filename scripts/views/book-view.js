@@ -3,7 +3,7 @@
 var app = app || {};
 
 (function(module) {
-  $('.icon-menu').on('click', function(event) {
+  $('.icon-menu').on('click', function(event) { // eslint-disable-line
     $('.nav-menu').slideToggle(350);
   })
 
@@ -14,7 +14,7 @@ var app = app || {};
 
   const bookView = {};
 
-  bookView.initIndexPage = function(ctx) {
+  bookView.initIndexPage = function(ctx) { // eslint-disable-line
     resetView();
     $('.book-view').show();
     $('#book-list').empty();
