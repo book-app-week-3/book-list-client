@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="./styles/base.css">
     <link rel="stylesheet" href="./styles/layout.css">
     <link rel="stylesheet" href="./styles/modules.css">
-    <link rel="shortcut icon" type="image/png" href="stockimgs\code-fellows-logo.png">
+
+    <link rel="shortcut icon" type="image/png" href="stockimgs\code-fellows-logo.png"> <!--favicon-->
+
     <script type="text/x-handlebars-template" id="error-template">
       <h3>Ooops!! Something went wrong!</h3>
       <p>{{status}}: {{statusText}}</p>
@@ -22,9 +24,22 @@
           <div class ="book-overlay">
             <h3>{{title}}</h3>
             <p>{{author}}</p>
+            <p class="detail-button"><a href="/books/{{book_id}}">view details</a><p>
           </div>
         </div>
       </li>
+    </script>
+
+    <script type="text/x-handlebars-template" id="book-detail-template">
+      <div class="book-container">
+        <h3>{{title}}</h3>
+        <div class="book-details">
+          <p>{{author}}</p>
+          <p>{{isbn}}</p>
+        </div>
+        <img src={{image_url}}>
+        <p>{{description}}</p>
+      </div>
     </script>
   </head>
   <body>
@@ -32,7 +47,14 @@
       <div class="header-content">
         <img id="logo" src="./stockimgs/code-fellows-logo.png" width=100px height=auto>
         <h1>Code Fellows Books</h1>
+        <div class="icon-menu"></div>
       </div>
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="/">home</a></li>
+          <li><a href="/books/new">add book</a></li>
+        </ul>
+      </nav>
     </header>
     <main>
       <section class="error-view container">
@@ -42,15 +64,42 @@
       <section class="book-view container">
         <h2 class="view-title">My Books</h2>
         <section class="book-list">
-          <ul id="booklist"></ul>
+          <ul id="book-list"></ul>
         </section>
       </section>
+
+      <section class="detail-view container">
+        <section class="book-detail"></section>
+      </section>
+
+      <section class="create-view container">
+        <h2 class="view-title">add a new book</h2>
+        <form id="create-form">
+          <input type="text" name="title" placeholder="title">
+          <input type="text" name="author" placeholder="author">
+          <input type="text" name="isbn" placeholder="isbn">
+          <input type="text" name="image_url" placeholder="image_url">
+          <textarea name="description" placeholder="description" rows="5" cols="30"></textarea>
+          <button type="submit">submit</button>
+        </form>
+      </section>
     </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-    </script>
+    <footer>
+      <aside class="social-links">
+        <ul>
+          <li><i class="icon-mail2"><a href=""></a></i></li>
+          <li><i class="icon-twitter"><a href=""></a></i></li>
+          <li><i class="icon-github"><a href=""></a></i></li>
+          <li><i class="icon-linkedin2"><a href=""></a></i></li>
+        </ul>
+      </aside>
+    </footer>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script type="text/javascript" src="./scripts/models/book.js"></script>
     <script type="text/javascript" src="./scripts/views/book-view.js"></script>
     <script type="text/javascript" src="./scripts/views/error-view.js"></script>
+    <script type="text/javascript" src="./scripts/views/routes.js"></script>
   </body>
 </html>

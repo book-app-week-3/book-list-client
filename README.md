@@ -26,3 +26,4 @@ The app is in the early stages of development, but will be a functioning full st
 * node.js - https://nodejs.org/en/
 * jQuery - http://jquery.com/
 * reset.css - https://meyerweb.com/eric/tools/css/reset/
+* page.js - https://visionmedia.github.io/page.js/
