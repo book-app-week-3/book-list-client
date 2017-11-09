@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./styles/layout.css">
     <link rel="stylesheet" href="./styles/modules.css">
 
-    <link rel="shortcut icon" type="image/png" href="stockimgs\code-fellows-logo.png"> <!--favicon-->
+    <!-- <link rel="shortcut icon" type="image/png" href="stockimgs\code-fellows-logo.png"> -->
 
     <script type="text/x-handlebars-template" id="error-template">
       <h3>Ooops!! Something went wrong!</h3>
@@ -53,6 +53,7 @@
         <ul>
           <li><a href="/">home</a></li>
           <li><a href="/books/new">add book</a></li>
+          <li class="admin"><a href="/admin">Login</a></li>
         </ul>
       </nav>
     </header>
@@ -73,14 +74,21 @@
       </section>
 
       <section class="create-view container">
-        <h2 class="view-title">add a new book</h2>
+        <h2 class="view-title">Add a New Book</h2>
         <form id="create-form">
           <input type="text" name="title" placeholder="title">
           <input type="text" name="author" placeholder="author">
           <input type="text" name="isbn" placeholder="isbn">
           <input type="text" name="image_url" placeholder="image_url">
           <textarea name="description" placeholder="description" rows="5" cols="30"></textarea>
-          <button type="submit">submit</button>
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+      <section class="admin-view container">
+        <h2 class="view-title">Enter your Passphrase</h2>
+        <form id="admin-form">
+          <input type="number" name="passphrase" placeholder="1234">
+          <button type="submit">Verify</button>
         </form>
       </section>
     </main>
@@ -100,6 +108,7 @@
     <script type="text/javascript" src="./scripts/models/book.js"></script>
     <script type="text/javascript" src="./scripts/views/book-view.js"></script>
     <script type="text/javascript" src="./scripts/views/error-view.js"></script>
+    <script type="text/javascript" src="./scripts/views/admin-view.js"></script>
     <script type="text/javascript" src="./scripts/views/routes.js"></script>
   </body>
 </html>
