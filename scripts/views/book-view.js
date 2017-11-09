@@ -29,6 +29,28 @@ var app = app || {};
     $('.book-details').empty();
     let template = Handlebars.compile($('#book-detail-template').text());
     $('.book-details').append(template(ctx));
+    $('#update-button').on('submit', function(event) {
+      event.preventDefault();
+
+      bookView.updateHandler();
+    })
+  }
+
+  bookView.updateHandler = function(ctx) { // eslint-disable-line
+    resetView();
+    $('.update-view').show();
+    $('#update-button').on('submit', function(event){
+      event.preventDefault();
+
+      let book = {
+        title: event.target.title.value,
+        author: event.target.author.value,
+        isbn: event.target.isbn.value,
+        image_url: event.target.image_url.value,
+        description: event.target.description.value,
+      };
+      app.Book.update(book);
+    })
   }
 
   bookView.initCreateFormPage = function() {
