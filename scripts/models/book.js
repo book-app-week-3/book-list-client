@@ -48,7 +48,7 @@ const __API_URL__ = 'http://localhost:3000';
     console.log(ctx);
     console.log('book ', book);
     $.ajax({
-      url: `${__API_URL__}/api/v1/books/${ctx.book_id}`,
+      url: `${__API_URL__}/api/v1/books/${book.book_id}`,
       method: 'PUT',
       data: book,
       success: () => page('/')
@@ -58,9 +58,9 @@ const __API_URL__ = 'http://localhost:3000';
       .catch(errorCallback);
   }
 
-  Book.destroy = ctx => {
+  Book.destroy = (ctx) => {
     $.ajax({
-      url: `${__API_URL__}/api/v1/books/${ctx.params.book_id}`,
+      url: `${__API_URL__}/api/v1/books/${ctx.book_id}`,
       method: 'DELETE'
     })
       .then(console.log('deleted book'))

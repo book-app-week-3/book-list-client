@@ -30,28 +30,12 @@ var app = app || {};
     let template = Handlebars.compile($('#book-detail-template').text());
     $('.book-details').append(template(ctx));
     $('#update-button').on('click', function() {
-      // event.preventDefault();
       bookView.initUpdateFormPage(ctx);
-      // bookView.updateHandler();
+    })
+    $('#delete-button').on('click', function(){
+      module.Book.destroy(ctx);
     })
   }
-
-  // bookView.updateHandler = function(ctx) { // eslint-disable-line
-  //   resetView();
-  //   $('.update-view').show();
-  //   $('#update-button').on('submit', function(event){
-  //     event.preventDefault();
-  //
-  //     let book = {
-  //       title: event.target.title.value,
-  //       author: event.target.author.value,
-  //       isbn: event.target.isbn.value,
-  //       image_url: event.target.image_url.value,
-  //       description: event.target.description.value,
-  //     };
-  //     app.Book.update(book);
-  //   })
-  // }
 
   bookView.initCreateFormPage = function() {
     resetView();
