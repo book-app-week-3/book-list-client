@@ -29,29 +29,29 @@ var app = app || {};
     $('.book-details').empty();
     let template = Handlebars.compile($('#book-detail-template').text());
     $('.book-details').append(template(ctx));
-    $('#update-button').on('submit', function(event) {
-      event.preventDefault();
-
-      bookView.updateHandler();
+    $('#update-button').on('click', function() {
+      // event.preventDefault();
+      bookView.initUpdateFormPage(ctx);
+      // bookView.updateHandler();
     })
   }
 
-  bookView.updateHandler = function(ctx) { // eslint-disable-line
-    resetView();
-    $('.update-view').show();
-    $('#update-button').on('submit', function(event){
-      event.preventDefault();
-
-      let book = {
-        title: event.target.title.value,
-        author: event.target.author.value,
-        isbn: event.target.isbn.value,
-        image_url: event.target.image_url.value,
-        description: event.target.description.value,
-      };
-      app.Book.update(book);
-    })
-  }
+  // bookView.updateHandler = function(ctx) { // eslint-disable-line
+  //   resetView();
+  //   $('.update-view').show();
+  //   $('#update-button').on('submit', function(event){
+  //     event.preventDefault();
+  //
+  //     let book = {
+  //       title: event.target.title.value,
+  //       author: event.target.author.value,
+  //       isbn: event.target.isbn.value,
+  //       image_url: event.target.image_url.value,
+  //       description: event.target.description.value,
+  //     };
+  //     app.Book.update(book);
+  //   })
+  // }
 
   bookView.initCreateFormPage = function() {
     resetView();
@@ -71,8 +71,14 @@ var app = app || {};
   }
 
   bookView.initUpdateFormPage = function(ctx) {
+    console.log(ctx);
     resetView();
     $('.update-view').show();
+    $('#update-title').val(ctx.title);
+    $('#update-author').val(ctx.author);
+    $('#update-isbn').val(ctx.isbn);
+    $('#update-image_url').val(ctx.image_url);
+    $('#update-description').val(ctx.description);
     $('#update-form').on('submit', function(event){
       event.preventDefault();
 
@@ -82,7 +88,10 @@ var app = app || {};
         isbn: event.target.isbn.value,
         image_url: event.target.image_url.value,
         description: event.target.description.value,
+        book_id: ctx.book_id
       };
+      console.log('ctx ', ctx);
+      console.log(book);
       module.Book.update(ctx, book);
     })
   }

@@ -44,21 +44,18 @@ const __API_URL__ = 'http://localhost:3000';
       .catch(errorCallback);
 
 
-  Book.update = (ctx, next) => {
+  Book.update = (ctx, book) => {
+    console.log(ctx);
+    console.log('book ', book);
     $.ajax({
-      url: `${__API_URL__}/api/v1/books/${ctx.params.book_id}`,
+      url: `${__API_URL__}/api/v1/books/${ctx.book_id}`,
       method: 'PUT',
-      data: {
-        title: ctx.title,
-        author: ctx.author,
-        isbn: ctx.isbn,
-        image_url: ctx.image_url,
-        description: ctx.description
-      }
+      data: book,
+      success: () => page('/')
     })
-      .then(() => page('/'))
+      // .then(ctx = console.log(ctx))
+      // .then(() => page('/'))
       .catch(errorCallback);
-    next();
   }
 
   Book.destroy = ctx => {
