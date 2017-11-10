@@ -66,11 +66,11 @@ var app = app || {};
         image_url: event.target.image_url.value,
         description: event.target.description.value,
       };
-      app.Book.create(book);
+      module.Book.create(book);
     })
   }
 
-  bookView.initUpdateFormPage = function(ctx) { // eslint-disable-line
+  bookView.initUpdateFormPage = function(ctx) {
     resetView();
     $('.update-view').show();
     $('#update-form').on('submit', function(event){
@@ -83,7 +83,7 @@ var app = app || {};
         image_url: event.target.image_url.value,
         description: event.target.description.value,
       };
-      app.Book.update(book);
+      module.Book.update(ctx, book);
     })
   }
 
