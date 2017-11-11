@@ -3,7 +3,7 @@
 var app = app || {};
 
 (function(module) {
-  $('.icon-menu').on('click', function(event) { // eslint-disable-line
+  $('.icon-menu').off().on('click', function(event) { // eslint-disable-line
     $('.nav-menu').slideToggle(350);
   })
 
@@ -13,6 +13,7 @@ var app = app || {};
   }
 
   const bookView = {};
+  bookView.TOKEN = '8282';
 
   bookView.initIndexPage = function(ctx) { // eslint-disable-line
     resetView();
@@ -29,19 +30,26 @@ var app = app || {};
     $('.book-details').empty();
     let template = Handlebars.compile($('#book-detail-template').text());
     $('.book-details').append(template(ctx));
-    $('#update-button').on('click', function() {
-      bookView.initUpdateFormPage(ctx);
-    //   page('/books/:book_id/update', (ctx) => app.Book.fetchOne(ctx, bookView.initUpdateFormPage(ctx)));
+    $('#update-button').off().on('click', function() {
+      if (module.adminView.login === bookView.TOKEN){
+        bookView.initUpdateFormPage(ctx);
+      } else {
+        module.adminView.initAdminPage(ctx);
+      }
     })
-    $('#delete-button').on('click', function(){
-      module.Book.destroy(ctx);
+    $('#delete-button').off().on('click', function(){
+      if (module.adminView.login === bookView.TOKEN){
+        module.Book.destroy(ctx);
+      } else {
+        module.adminView.initAdminPage(ctx);
+      }
     })
   }
 
   bookView.initCreateFormPage = function() {
     resetView();
     $('.create-view').show();
-    $('#create-form').on('submit', function(event) {
+    $('#create-form').off().on('submit', function(event) {
       event.preventDefault();
 
       let book = {

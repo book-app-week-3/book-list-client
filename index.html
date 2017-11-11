@@ -10,8 +10,6 @@
     <link rel="stylesheet" href="./styles/layout.css">
     <link rel="stylesheet" href="./styles/modules.css">
 
-    <!-- <link rel="shortcut icon" type="image/png" href="stockimgs\code-fellows-logo.png"> -->
-
     <script type="text/x-handlebars-template" id="error-template">
       <h3>Ooops!! Something went wrong!</h3>
       <p>{{status}}: {{statusText}}</p>
@@ -102,8 +100,9 @@
       <section class="admin-view container">
         <h2 class="view-title">Enter your Passphrase</h2>
         <form id="admin-form">
-          <input type="number" name="passphrase" placeholder="1234">
+          <input id="password" type="number" name="password" placeholder="1234">
           <button type="submit">Verify</button>
+          <div id="incorrect"></div>
         </form>
       </section>
     </main>

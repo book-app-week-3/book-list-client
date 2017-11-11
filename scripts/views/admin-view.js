@@ -1,33 +1,23 @@
 'use strict';
 
 var app = app || {};
-// var __API_URL__ = 'http://localhost:3000';
 
 (function(module) {
   const adminView = {};
 
-  adminView.initAdminPage = function() {
+  adminView.initAdminPage = function(ctx) {
     $('.container').hide();
     $('.admin-view').show();
     $('#admin-form').on('submit', function(event) {
       event.preventDefault();
-      let token = event.target.passphrase.value;
-
-      $.get(`${__API_URL__}/admin`, {token}) // eslint-disable-line
-        .then(() => {
-          localStorage.token = true;
-          page('/books/new');
-        })
-        .catch(() => page('/'));
+      if(event.target.password.value !== module.bookView.TOKEN){
+        $('#incorrect').text('ACCESS DENIED');
+      } else {
+        adminView.login = event.target.password.value;
+        module.bookView.initDetailPage(ctx);
+      }
     })
   };
-
-  adminView.verify = function(ctx, next) {
-    if(!localStorage.token) $('.admin').hide();
-    if(!localStorage.token) console.log('no token')
-    else console.log('token');
-    next();
-  }
 
   module.adminView = adminView;
 })(app)
