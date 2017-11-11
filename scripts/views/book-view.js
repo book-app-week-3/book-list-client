@@ -31,6 +31,7 @@ var app = app || {};
     $('.book-details').append(template(ctx));
     $('#update-button').on('click', function() {
       bookView.initUpdateFormPage(ctx);
+    //   page('/books/:book_id/update', (ctx) => app.Book.fetchOne(ctx, bookView.initUpdateFormPage(ctx)));
     })
     $('#delete-button').on('click', function(){
       module.Book.destroy(ctx);
@@ -63,7 +64,7 @@ var app = app || {};
     $('#update-isbn').val(ctx.isbn);
     $('#update-image_url').val(ctx.image_url);
     $('#update-description').val(ctx.description);
-    $('#update-form').on('submit', function(event){
+    $('#update-form').off().on('submit', function(event){
       event.preventDefault();
 
       let book = {
