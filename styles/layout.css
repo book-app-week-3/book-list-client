@@ -1,0 +1,25 @@
+.header-content {
+  margin: 0 auto;
+  width: 100%;
+  background-color: lightGray;
+}
+
+
+#logo {
+  float: left;
+  background-color: lightGray;
+  vertical-align: middle;
+}
+
+footer {
+  min-height: 160px;
+  text-align: right;
+  padding: 1em;
+  background: lightBlue;
+}
+
+.icon-menu {
+  font-size: 80px;
+  float: right;
+  display: inline-block;
+}
