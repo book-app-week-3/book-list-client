@@ -64,7 +64,6 @@ var app = app || {};
   }
 
   bookView.initUpdateFormPage = function(ctx) {
-    console.log(ctx);
     resetView();
     $('.update-view').show();
     $('#update-title').val(ctx.title);
@@ -83,8 +82,6 @@ var app = app || {};
         description: event.target.description.value,
         book_id: ctx.book_id
       };
-      console.log('ctx ', ctx);
-      console.log(book);
       module.Book.update(ctx, book);
     })
   }

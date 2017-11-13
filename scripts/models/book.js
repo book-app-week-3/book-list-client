@@ -22,7 +22,6 @@ const __API_URL__ = 'https://cl-ab-booklist.herokuapp.com';
 
   Book.all = [];
   Book.loadAll = rows => {
-    console.log(rows);
     Book.all = rows.sort((a, b) => b.title - a.title).map(book => new Book(book));
   }
   Book.fetchAll = callback =>
@@ -45,8 +44,6 @@ const __API_URL__ = 'https://cl-ab-booklist.herokuapp.com';
 
 
   Book.update = (ctx, book) => {
-    console.log(ctx);
-    console.log('book ', book);
     $.ajax({
       url: `${__API_URL__}/api/v1/books/${book.book_id}`,
       method: 'PUT',
